@@ -521,6 +521,35 @@ Reset default styling for dialogs.
       padding: 0;
     }
 
+    .video-modal::backdrop {
+      background: rgba(3, 6, 5, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .video-modal {
+      width: min(92vw, 1100px);
+      border: 1px solid rgba(212, 197, 176, 0.16);
+      border-radius: 24px;
+      background: #060b08;
+      color: #f9f9f6;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .video-modal__video {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+    }
+
+    .video-modal__video video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #000;
+    }
+
     /*
 Prevent resizing textareas horizontally by default.
 */
@@ -2880,40 +2909,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     .why-item:hover .why-index {
       transform: translateX(-8px);
       color: rgb(212 197 176 / 0.95);
-    }
-
-    .testimonial-stars .testimonial-star {
-      opacity: 0;
-      transform: translateY(8px) scale(0.85);
-      animation: testimonial-star-in 420ms ease forwards;
-    }
-
-    .testimonial-stars .testimonial-star:nth-child(1) {
-      animation-delay: 0ms;
-    }
-
-    .testimonial-stars .testimonial-star:nth-child(2) {
-      animation-delay: 120ms;
-    }
-
-    .testimonial-stars .testimonial-star:nth-child(3) {
-      animation-delay: 240ms;
-    }
-
-    .testimonial-stars .testimonial-star:nth-child(4) {
-      animation-delay: 360ms;
-    }
-
-    .testimonial-stars .testimonial-star:nth-child(5) {
-      animation-delay: 480ms;
-    }
-
-    @keyframes testimonial-star-in {
-      from {
-        opacity: 0;
-        transform: translateY(8px) scale(0.85);
-      }
-
+    }`n
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -5231,7 +5227,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
               <div class="hero-outline-track outline-text font-display font-black text-[18vw] leading-none whitespace-nowrap select-none"
                 x-file-name="Hero" x-line-number="46" x-column="8" x-component="div" x-id="Hero_46_8" x-dynamic="false">
                 DODO · KNOWS</div>
-            </div>
+              </div>
             <div
               class="relative max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
               x-file-name="Hero" x-line-number="51" x-column="6" x-component="div" x-id="Hero_51_6" x-dynamic="false">
@@ -5241,8 +5237,8 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-sand/20 text-sand text-xs font-semibold uppercase tracking-[0.2em]"
                   x-file-name="Hero" x-line-number="53" x-column="10" x-component="div" x-id="Hero_53_10"
                   x-dynamic="false" style="opacity: 1; transform: none;"><span
-                    class="w-1.5 h-1.5 rounded-full bg-rust animate-pulse" x-file-name="Hero" x-line-number="61"
-                    x-column="12" x-component="span" x-id="Hero_61_12" x-dynamic="false"></span>We Know Your Start</div>
+                  class="w-1.5 h-1.5 rounded-full bg-rust animate-pulse" x-file-name="Hero" x-line-number="61"
+                  x-column="12" x-component="span" x-id="Hero_61_12" x-dynamic="false"></span>We Know Your Start</div>
               <div class="relative">
                 <h1
                   class="font-display font-black tracking-[-0.03em] leading-[0.95] mt-6 text-5xl sm:text-6xl lg:text-[7.5rem] text-balance pr-32 sm:pr-40 lg:pr-56"
@@ -5258,7 +5254,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                     x-source-editable="false" style="display: contents;"> </span><span class="text-rust"
                     x-file-name="Hero" x-line-number="74" x-column="12" x-component="span" x-id="Hero_74_12"
                     x-dynamic="false">to</span> Ignore.</h1>
-                
+                    
               </div>
                 <p class="mt-8 text-lg md:text-xl max-w-2xl leading-relaxed text-sand" x-file-name="Hero"
                   x-line-number="77" x-column="10" x-component="p" x-id="Hero_77_10" x-dynamic="false"
@@ -5866,9 +5862,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 x-line-number="91" x-column="8" x-component="div" x-id="CaseStudies_91_8" x-dynamic="true"
                 x-source-type="computed" x-source-editable="false">
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl aspect-[9/16] min-h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl aspect-[9/16] min-h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-lumen-coffee" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none;"
+                  onclick="window.openFullVideo('UGC Content','./assets/videos/ugc.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for UGC Content" data-video-trigger
+                    data-video-title="UGC Content" data-video-src="./assets/videos/ugc.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 m-auto w-full h-full object-contain transition-transform duration-[1200ms] group-hover:scale-105"
                     x-file-name="CaseStudies" x-line-number="102" x-column="14" x-component="video"
@@ -5898,9 +5899,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   </div>
                 </article>
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-finch-finance" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;"
+                  onclick="window.openFullVideo('CGI Shoot','./assets/videos/cgi-shoot.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for CGI Shoot" data-video-trigger
+                    data-video-title="CGI Shoot" data-video-src="./assets/videos/cgi-shoot.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     x-file-name="CaseStudies" x-line-number="102" x-column="14" x-component="video"
@@ -5930,9 +5936,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   </div>
                 </article>
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-noto-skincare" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;"
+                  onclick="window.openFullVideo('Music Shoot','./assets/videos/music-shoot.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for Music Shoot" data-video-trigger
+                    data-video-title="Music Shoot" data-video-src="./assets/videos/music-shoot.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     x-file-name="CaseStudies" x-line-number="102" x-column="14" x-component="video"
@@ -5962,9 +5973,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   </div>
                 </article>
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-pivot-labs" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;"
+                  onclick="window.openFullVideo('Wedding Shoot','./assets/videos/wedding-shoot.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for Wedding Shoot" data-video-trigger
+                    data-video-title="Wedding Shoot" data-video-src="./assets/videos/wedding-shoot.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     x-file-name="CaseStudies" x-line-number="102" x-column="14" x-component="video"
@@ -5994,9 +6010,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   </div>
                 </article>
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-mira-jewels" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;"
+                  onclick="window.openFullVideo('Motion Graphics','./assets/videos/motion-graphics.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for Motion Graphics" data-video-trigger
+                    data-video-title="Motion Graphics" data-video-src="./assets/videos/motion-graphics.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     x-file-name="CaseStudies" x-line-number="102" x-column="14" x-component="video"
@@ -6026,9 +6047,14 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                   </div>
                 </article>
                 <article
-                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10"
+                  class="md:col-span-1 group relative overflow-hidden rounded-3xl h-[460px] border border-sand/10 cursor-pointer"
                   data-testid="case-study-store-shoot" x-file-name="CaseStudies" x-line-number="93" x-column="12"
-                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;">
+                  x-component="article" x-id="CaseStudies_93_12" x-dynamic="false" style="opacity: 1; transform: none; height: 460px;"
+                  onclick="window.openFullVideo('Store Shoot','./assets/videos/store-shoot.mp4')"
+                  role="button" tabindex="0">
+                  <button type="button" class="absolute inset-0 z-20 cursor-pointer bg-transparent"
+                    aria-label="Open full video for Store Shoot" data-video-trigger
+                    data-video-title="Store Shoot" data-video-src="./assets/videos/store-shoot.mp4"></button>
                   <video autoplay muted loop playsinline
                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                     style="object-position: center;"
@@ -6264,252 +6290,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
                 </div>
               </div>
             </div>
-          </section>
-          <section data-testid="testimonials-section" class="relative py-24 md:py-36 bg-ink text-off"
-            x-file-name="Testimonials" x-line-number="31" x-column="4" x-component="section" x-id="Testimonials_31_4"
-            x-dynamic="false">
-            <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16" x-file-name="Testimonials" x-line-number="35"
-              x-column="6" x-component="div" x-id="Testimonials_35_6" x-dynamic="false">
-              <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
-                x-file-name="Testimonials" x-line-number="36" x-column="8" x-component="div" x-id="Testimonials_36_8"
-                x-dynamic="false">
-                <div x-file-name="Testimonials" x-line-number="37" x-column="10" x-component="div"
-                  x-id="Testimonials_37_10" x-dynamic="false">
-                  <div class="text-xs font-bold uppercase tracking-[0.3em] text-sand" x-file-name="Testimonials"
-                    x-line-number="38" x-column="12" x-component="div" x-id="Testimonials_38_12" x-dynamic="false">✦
-                    Testimonials</div>
-                  <h2 class="font-display font-black text-5xl md:text-7xl tracking-tight leading-[0.95] mt-4"
-                    x-file-name="Testimonials" x-line-number="39" x-column="12" x-component="h2"
-                    x-id="Testimonials_39_12" x-dynamic="false">Founders <span class="text-rust italic"
-                      x-file-name="Testimonials" x-line-number="40" x-column="23" x-component="span"
-                      x-id="Testimonials_40_23" x-dynamic="false"
-                      style="font-family: &quot;Cormorant Garamond&quot;, serif;">who get it</span>.</h2>
-                </div>
-                <div class="testimonial-stars flex items-center gap-2" x-file-name="Testimonials" x-line-number="43" x-column="10"
-                  x-component="div" x-id="Testimonials_43_10" x-dynamic="true" x-source-type="computed"
-                  x-source-editable="false"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="testimonial-star lucide lucide-star fill-rust text-rust" aria-hidden="true"
-                    x-file-name="Testimonials" x-line-number="44" x-column="34" x-component="Star"
-                    x-id="Testimonials_44_34" x-dynamic="true" x-source-type="static-imported"
-                    x-source-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="44"
-                    x-source-editable="true" x-array-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-array-line="44" x-array-item-param="i" x-array-inline="true">
-                    <path
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="testimonial-star lucide lucide-star fill-rust text-rust" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="44" x-column="34" x-component="Star" x-id="Testimonials_44_34" x-dynamic="true"
-                    x-source-type="static-imported" x-source-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="44"
-                    x-source-editable="true" x-array-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-array-line="44" x-array-item-param="i" x-array-inline="true">
-                    <path
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="testimonial-star lucide lucide-star fill-rust text-rust" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="44" x-column="34" x-component="Star" x-id="Testimonials_44_34" x-dynamic="true"
-                    x-source-type="static-imported" x-source-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="44"
-                    x-source-editable="true" x-array-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-array-line="44" x-array-item-param="i" x-array-inline="true">
-                    <path
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="testimonial-star lucide lucide-star fill-rust text-rust" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="44" x-column="34" x-component="Star" x-id="Testimonials_44_34" x-dynamic="true"
-                    x-source-type="static-imported" x-source-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="44"
-                    x-source-editable="true" x-array-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-array-line="44" x-array-item-param="i" x-array-inline="true">
-                    <path
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="testimonial-star lucide lucide-star fill-rust text-rust" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="44" x-column="34" x-component="Star" x-id="Testimonials_44_34" x-dynamic="true"
-                    x-source-type="static-imported" x-source-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="44"
-                    x-source-editable="true" x-array-file="/app/frontend/src/components/Testimonials.jsx"
-                    x-array-line="44" x-array-item-param="i" x-array-inline="true">
-                    <path
-                      d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                    </path>
-                  </svg><span class="ml-3 text-sm font-semibold text-sand" x-file-name="Testimonials" x-line-number="45"
-                    x-column="12" x-component="span" x-id="Testimonials_45_12" x-dynamic="false">4.9 / 5 avg NPS</span>
-                </div>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6" x-file-name="Testimonials" x-line-number="49"
-                x-column="8" x-component="div" x-id="Testimonials_49_8" x-dynamic="true" x-source-type="computed"
-                x-source-editable="false">
-                <figure
-                  class="relative rounded-3xl p-8 md:p-10 transition-all duration-500 bg-forest border border-sand/10 hover:border-rust/60"
-                  data-testid="testimonial-1" x-file-name="Testimonials" x-line-number="51" x-column="12"
-                  x-component="figure" x-id="Testimonials_51_12" x-dynamic="false" style="opacity: 1; transform: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-quote text-rust mb-6" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="62" x-column="14" x-component="Quote" x-id="Testimonials_62_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6" x-array-item-param="t">
-                    <path
-                      d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                    <path
-                      d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                  </svg>
-                  <blockquote class="text-lg md:text-xl leading-relaxed text-off" x-file-name="Testimonials"
-                    x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                    x-array-item-param="t">"<span data-ve-dynamic="true" x-excluded="true" x-file-name="Testimonials"
-                      x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14_expr1"
-                      x-dynamic="true" x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                      x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                      x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                      x-array-item-param="t" style="display: contents;">Dodo Knows rebuilt our entire growth engine.
-                      Three quarters in, we're the default brand in our category.</span>"</blockquote>
-                  <figcaption class="mt-8 flex items-center gap-4" x-file-name="Testimonials" x-line-number="66"
-                    x-column="14" x-component="figcaption" x-id="Testimonials_66_14" x-dynamic="false"><img
-                      alt="Priya Raghavan" class="w-12 h-12 rounded-full object-cover border border-sand/30"
-                      loading="lazy" x-file-name="Testimonials" x-line-number="67" x-column="16" x-component="img"
-                      x-id="Testimonials_67_16" x-dynamic="false"
-                      src="./Dodo Knows — We Make Brands Impossible to Ignore_files/photo-1762522926157-bcc04bf0b10a">
-                    <div x-file-name="Testimonials" x-line-number="68" x-column="16" x-component="div"
-                      x-id="Testimonials_68_16" x-dynamic="false">
-                      <div class="font-semibold" x-file-name="Testimonials" x-line-number="69" x-column="18"
-                        x-component="div" x-id="Testimonials_69_18" x-dynamic="true" x-source-type="static-imported"
-                        x-source-var="TESTIMONIALS" x-source-file-abs="/app/frontend/src/components/Testimonials.jsx"
-                        x-source-line="6" x-source-path="name" x-source-editable="true" x-array-var="TESTIMONIALS"
-                        x-array-line="6" x-array-item-param="t">Priya Raghavan</div>
-                      <div class="text-xs uppercase tracking-[0.15em] text-sand" x-file-name="Testimonials"
-                        x-line-number="70" x-column="18" x-component="div" x-id="Testimonials_70_18" x-dynamic="true"
-                        x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                        x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                        x-source-path="role" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                        x-array-item-param="t">Founder, Lumen Coffee</div>
-                    </div>
-                  </figcaption>
-                </figure>
-                <figure
-                  class="relative rounded-3xl p-8 md:p-10 transition-all duration-500 bg-forest border border-sand/10 hover:border-rust/60"
-                  data-testid="testimonial-2" x-file-name="Testimonials" x-line-number="51" x-column="12"
-                  x-component="figure" x-id="Testimonials_51_12" x-dynamic="false" style="opacity: 1; transform: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-quote text-rust mb-6" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="62" x-column="14" x-component="Quote" x-id="Testimonials_62_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6" x-array-item-param="t">
-                    <path
-                      d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                    <path
-                      d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                  </svg>
-                  <blockquote class="text-lg md:text-xl leading-relaxed text-off" x-file-name="Testimonials"
-                    x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                    x-array-item-param="t">"<span data-ve-dynamic="true" x-excluded="true" x-file-name="Testimonials"
-                      x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14_expr1"
-                      x-dynamic="true" x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                      x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                      x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                      x-array-item-param="t" style="display: contents;">They think like operators, not agencies. Every
-                      deck they ship moves a number somewhere in our P&amp;L.</span>"</blockquote>
-                  <figcaption class="mt-8 flex items-center gap-4" x-file-name="Testimonials" x-line-number="66"
-                    x-column="14" x-component="figcaption" x-id="Testimonials_66_14" x-dynamic="false"><img
-                      alt="Arjun Mehta" class="w-12 h-12 rounded-full object-cover border border-sand/30" loading="lazy"
-                      x-file-name="Testimonials" x-line-number="67" x-column="16" x-component="img"
-                      x-id="Testimonials_67_16" x-dynamic="false"
-                      src="./Dodo Knows — We Make Brands Impossible to Ignore_files/photo-1762522927402-f390672558d8">
-                    <div x-file-name="Testimonials" x-line-number="68" x-column="16" x-component="div"
-                      x-id="Testimonials_68_16" x-dynamic="false">
-                      <div class="font-semibold" x-file-name="Testimonials" x-line-number="69" x-column="18"
-                        x-component="div" x-id="Testimonials_69_18" x-dynamic="true" x-source-type="static-imported"
-                        x-source-var="TESTIMONIALS" x-source-file-abs="/app/frontend/src/components/Testimonials.jsx"
-                        x-source-line="6" x-source-path="name" x-source-editable="true" x-array-var="TESTIMONIALS"
-                        x-array-line="6" x-array-item-param="t">Arjun Mehta</div>
-                      <div class="text-xs uppercase tracking-[0.15em] text-sand" x-file-name="Testimonials"
-                        x-line-number="70" x-column="18" x-component="div" x-id="Testimonials_70_18" x-dynamic="true"
-                        x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                        x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                        x-source-path="role" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                        x-array-item-param="t">CMO, Finch Finance</div>
-                    </div>
-                  </figcaption>
-                </figure>
-                <figure
-                  class="relative rounded-3xl p-8 md:p-10 transition-all duration-500 bg-forest border border-sand/10 hover:border-rust/60"
-                  data-testid="testimonial-3" x-file-name="Testimonials" x-line-number="51" x-column="12"
-                  x-component="figure" x-id="Testimonials_51_12" x-dynamic="false" style="opacity: 1; transform: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-quote text-rust mb-6" aria-hidden="true" x-file-name="Testimonials"
-                    x-line-number="62" x-column="14" x-component="Quote" x-id="Testimonials_62_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6" x-array-item-param="t">
-                    <path
-                      d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                    <path
-                      d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                    </path>
-                  </svg>
-                  <blockquote class="text-lg md:text-xl leading-relaxed text-off" x-file-name="Testimonials"
-                    x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14" x-dynamic="true"
-                    x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                    x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                    x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                    x-array-item-param="t">"<span data-ve-dynamic="true" x-excluded="true" x-file-name="Testimonials"
-                      x-line-number="63" x-column="14" x-component="blockquote" x-id="Testimonials_63_14_expr1"
-                      x-dynamic="true" x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                      x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                      x-source-path="quote" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                      x-array-item-param="t" style="display: contents;">Finally a team that says 'no' on purpose. Our
-                      brand has never felt this sharp, this expensive, this us.</span>"</blockquote>
-                  <figcaption class="mt-8 flex items-center gap-4" x-file-name="Testimonials" x-line-number="66"
-                    x-column="14" x-component="figcaption" x-id="Testimonials_66_14" x-dynamic="false"><img
-                      alt="Sara Lin" class="w-12 h-12 rounded-full object-cover border border-sand/30" loading="lazy"
-                      x-file-name="Testimonials" x-line-number="67" x-column="16" x-component="img"
-                      x-id="Testimonials_67_16" x-dynamic="false"
-                      src="./Dodo Knows — We Make Brands Impossible to Ignore_files/photo-1771898343647-bd979ad8cca5">
-                    <div x-file-name="Testimonials" x-line-number="68" x-column="16" x-component="div"
-                      x-id="Testimonials_68_16" x-dynamic="false">
-                      <div class="font-semibold" x-file-name="Testimonials" x-line-number="69" x-column="18"
-                        x-component="div" x-id="Testimonials_69_18" x-dynamic="true" x-source-type="static-imported"
-                        x-source-var="TESTIMONIALS" x-source-file-abs="/app/frontend/src/components/Testimonials.jsx"
-                        x-source-line="6" x-source-path="name" x-source-editable="true" x-array-var="TESTIMONIALS"
-                        x-array-line="6" x-array-item-param="t">Sara Lin</div>
-                      <div class="text-xs uppercase tracking-[0.15em] text-sand" x-file-name="Testimonials"
-                        x-line-number="70" x-column="18" x-component="div" x-id="Testimonials_70_18" x-dynamic="true"
-                        x-source-type="static-imported" x-source-var="TESTIMONIALS"
-                        x-source-file-abs="/app/frontend/src/components/Testimonials.jsx" x-source-line="6"
-                        x-source-path="role" x-source-editable="true" x-array-var="TESTIMONIALS" x-array-line="6"
-                        x-array-item-param="t">VP Marketing, Pivot Labs</div>
-                    </div>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </section>
-          <section id="contact" data-testid="contact-section" class="relative py-24 md:py-36 bg-forest-deep text-off"
+          </section><section id="contact" data-testid="contact-section" class="relative py-24 md:py-36 bg-forest-deep text-off"
             x-file-name="Contact" x-line-number="53" x-column="4" x-component="section" x-id="Contact_53_4"
             x-dynamic="false">
             <div class="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16" x-file-name="Contact" x-line-number="58"
@@ -6716,6 +6497,27 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
             </div>
           </section>
         </main>
+        <dialog id="video-modal" class="video-modal">
+          <form method="dialog" class="relative">
+            <button type="submit"
+              class="absolute top-4 right-4 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full border border-sand/20 bg-ink/80 text-off hover:bg-rust hover:border-rust transition-colors"
+              aria-label="Close video player">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-x" aria-hidden="true">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+            <div class="video-modal__video">
+              <video id="video-modal-video" controls playsinline preload="metadata"></video>
+            </div>
+            <div class="p-5 md:p-6 border-t border-sand/10">
+              <h3 id="video-modal-title" class="font-display text-2xl md:text-3xl font-bold tracking-tight">Video</h3>
+              <p class="mt-2 text-sm md:text-base text-sand">Use the controls to play the full version.</p>
+            </div>
+          </form>
+        </dialog>
         <footer data-testid="site-footer" class="relative overflow-hidden bg-ink text-off border-t border-sand/10"
           x-file-name="Footer" x-line-number="10" x-column="4" x-component="footer" x-id="Footer_10_4"
           x-dynamic="false">
@@ -7070,8 +6872,64 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
     crossorigin="anonymous"></script>
 
 
+  <script>
+    (function () {
+      var dialog = document.getElementById('video-modal');
+      var player = document.getElementById('video-modal-video');
+      var title = document.getElementById('video-modal-title');
+      var triggers = document.querySelectorAll('[data-video-trigger]');
+
+      if (!dialog || !player || !title || !triggers.length) {
+        return;
+      }
+
+      function resetPlayer() {
+        player.pause();
+        player.removeAttribute('src');
+        player.load();
+      }
+
+      function openFullVideo(videoTitle, videoSrc) {
+        if (!videoSrc) {
+          return;
+        }
+
+        if (!dialog.showModal) {
+          window.open(videoSrc, '_blank', 'noopener,noreferrer');
+          return;
+        }
+
+        title.textContent = videoTitle || 'Video';
+        player.src = videoSrc;
+        dialog.showModal();
+
+        var playPromise = player.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function () {});
+        }
+      }
+
+      window.openFullVideo = openFullVideo;
+
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          openFullVideo(
+            trigger.getAttribute('data-video-title'),
+            trigger.getAttribute('data-video-src')
+          );
+        });
+      });
+
+      dialog.addEventListener('click', function (event) {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener('close', resetPlayer);
+      dialog.addEventListener('cancel', resetPlayer);
+    })();
+  </script>
 </body>
 
 </html>
-
-
